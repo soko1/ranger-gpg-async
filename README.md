@@ -6,7 +6,7 @@
 
 ### Set the Default GPG Recipient
 
-Add your default GPG recipient email to your shell environment. This is required for encryption operations:
+Add your default GPG recipient email to your shell environment. This is required for encryption operations (for example **~/.zshrc**):
 
 ```
 export DEFAULT_RECIPIENT="email@email.com"
@@ -17,9 +17,11 @@ export DEFAULT_RECIPIENT="email@email.com"
 Run the following commands to clone the repository and install the plugin:
 
 ```
-git clone https://github.com/soko1/ranger-gpg-async
-cd ranger-gpg-async
-make install
+$ git clone https://github.com/soko1/ranger-gpg-async
+$ cd ranger-gpg-async
+$ make install
+(for uninstall)
+$ make uninstall
 ```
 
 ### Install Python Dependencies
@@ -27,13 +29,19 @@ make install
 Install the required Python dependencies:
 
 ```
-pip install python-gnupg
+$ pip install python-gnupg
 ```
 
 If you're using macOS and have ranger installed via Homebrew, use the following command to install python-gnupg:
 
 ```
-/opt/homebrew/Cellar/ranger/1.9.4/libexec/bin/python -m pip install python-gnupg
+$ which ranger
+/opt/homebrew/bin/ranger
+
+$ head -n1 /opt/homebrew/bin/ranger
+#!/opt/homebrew/Cellar/ranger/1.9.4/libexec/bin/python
+
+$ /opt/homebrew/Cellar/ranger/1.9.4/libexec/bin/python -m pip install python-gnupg
 ```
 
 ## Usage
