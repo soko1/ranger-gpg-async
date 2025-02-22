@@ -19,7 +19,9 @@ class encrypt(Command):
             self.fm.notify('DEFAULT_RECIPIENT environment variable must be set')
             return
 
-        gpg = GPG(gpgbinary='/opt/homebrew/bin/gpg', gnupghome=gpg_home)
+        # for macos
+        gpg_binary = '/opt/homebrew/bin/gpg' if os.path.exists('/opt/homebrew/bin/gpg') else '/usr/bin/gpg'
+        gpg = GPG(gpgbinary=gpg_binary, gnupghome=gpg_home)
 
         paths = [os.path.basename(f.path) for f in self.fm.thistab.get_selection()]
 
@@ -52,5 +54,4 @@ class encrypt(Command):
                     out.write(enc.data)
 
             self.fm.notify(f'Encrypted {p} successfully.')
-
 
